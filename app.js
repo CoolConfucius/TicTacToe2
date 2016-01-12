@@ -6,8 +6,7 @@ var state = 'pregame';
 var $display; 
 var $timer; 
 var $timer2;
-var secx; 
-var seco; 
+var secx, seco; 
 var myTimer; 
 var $reset; 
 var $play; 
@@ -78,6 +77,7 @@ function playClick(event){
           $display.text("Time is up! "+name2+" \u2665 loses!")
           window.clearTimeout(myTimer);
           $('#home').off();
+          $reset.text("Play again");
         }
         
       } else {
@@ -88,6 +88,7 @@ function playClick(event){
           $display.text("Time is up! "+name+" \u2660 loses!")
           window.clearTimeout(myTimer);
           $('#home').off();
+          $reset.text("Play again");
         }
       }
       
