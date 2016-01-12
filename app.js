@@ -5,6 +5,7 @@ var gameover = false;
 var $display; 
 var $timer; 
 var secs; 
+var myTimer; 
 
 function init() {
   // $display = $('#display');
@@ -35,6 +36,7 @@ function tileClick(event){
       var $display = $('#display');
       var message = "Player " + mark + " wins!"
       $display.text(message); 
+      window.clearTimeout(myTimer);
     };
   };
 };
@@ -45,7 +47,7 @@ function playClick(event){
   secs = 0; 
   secx = 60; 
   seco = 60; 
-  var myTimer = window.setInterval(function(){
+  myTimer = window.setInterval(function(){
     // console.log('hello?');
     // secs++;     
     // $timer.text(secs);
