@@ -26,8 +26,6 @@ function init() {
   $('#play').click(playClick); 
   $('#home').on('click', '.tile',(tileClick)); 
   $('#reset').click(resetClick);
-  $('#submit').click(submitClick);
-  $('#submit2').click(submit2Click);
 };
 
 function tileClick(event){
@@ -54,9 +52,10 @@ function tileClick(event){
         $display = $('#display');
         var winner;
         if (xo) { winner = name;} else {winner = name2;};
-        var message = winner + " Player " + mark + " wins!"
+        var message = winner + " " + mark + " wins!"
         $display.text(message); 
         window.clearTimeout(myTimer);
+        $('#home').off();
       };
     };
     
@@ -64,8 +63,6 @@ function tileClick(event){
 };
 
 function playClick(event){
-  $('#submit').off();
-  $('#submit2').off();
   name = $name.val();
   name2 = $name2.val();
   state = "game";
@@ -80,6 +77,7 @@ function playClick(event){
         } else {
           $display.text("Time is up! "+name2+" \u2665 loses!")
           window.clearTimeout(myTimer);
+          $('#home').off();
         }
         
       } else {
@@ -89,6 +87,7 @@ function playClick(event){
         } else {
           $display.text("Time is up! "+name+" \u2660 loses!")
           window.clearTimeout(myTimer);
+          $('#home').off();
         }
       }
       
@@ -113,6 +112,7 @@ function resetClick(event){
   $('#t6').text(clear); 
   $('#t7').text(clear); 
   $('#t8').text(clear); 
+  $('#home').on('click', '.tile',(tileClick)); 
   xo = false; 
   $display.text('Hit Play');
   $play.click(playClick); 
@@ -124,18 +124,7 @@ function resetClick(event){
   name2 = '';
   $name.text('');
   $name2.text('');
-  $('#submit').click(submitClick);
-  $('#submit2').click(submit2Click);
 }
-
-function submitClick(event){
-  name = $name.val();
-  console.log(name);
-};
-function submit2Click(event){
-  name2 = $name2.val();
-  console.log(name2);
-};
 
 
 var win = function(xo) {
