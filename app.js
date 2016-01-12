@@ -43,24 +43,31 @@ function playClick(event){
   $display = $('#display');
   $timer = $('#timer'); 
   secs = 0; 
-  secx = 0; 
-  seco = 0; 
+  secx = 60; 
+  seco = 60; 
   var myTimer = window.setInterval(function(){
     // console.log('hello?');
     // secs++;     
     // $timer.text(secs);
     if (xo) {
-      seco++;     
-      $timer.text(seco);
-      if (seco >= 60) {
+      if (seco > 0) {
+        seco--;     
+        $timer.text(seco);        
+      } else {
         alert("Time is up! \u2665 loses!");
-      };
+        $display.text("Time is up! \u2665 loses!")
+        window.clearTimeout(myTimer);
+      }
+      
     } else {
-      secx++;     
-      $timer.text(secx);      
-      if (seco >= 60) {
-        alert("Time is up! \u2665 loses!");
-      };
+      if (secx > 0) {
+        secx--;     
+        $timer.text(secx);              
+      } else {
+        alert("Time is up! \u2660 loses!");
+        $display.text("Time is up! \u2660 loses!")
+        window.clearTimeout(myTimer);
+      }
     }
 
   }, 200);
