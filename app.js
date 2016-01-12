@@ -3,10 +3,11 @@ $(document).ready(init);
 var xo = false; 
 var gameover = false; 
 var $display; 
+var $timer; 
+var secs; 
 
 function init() {
   // $display = $('#display');
-  console.log($display);
   $('#play').click(playClick); 
   $('#home').on('click', '.tile',(tileClick)); 
 };
@@ -40,6 +41,29 @@ function tileClick(event){
 
 function playClick(event){
   $display = $('#display');
+  $timer = $('#timer'); 
+  secs = 0; 
+  secx = 0; 
+  seco = 0; 
+  var myTimer = window.setInterval(function(){
+    // console.log('hello?');
+    // secs++;     
+    // $timer.text(secs);
+    if (xo) {
+      seco++;     
+      $timer.text(seco);
+      if (seco >= 60) {
+        alert("Time is up! \u2665 loses!");
+      };
+    } else {
+      secx++;     
+      $timer.text(secx);      
+      if (seco >= 60) {
+        alert("Time is up! \u2665 loses!");
+      };
+    }
+
+  }, 200);
   var status = ""; 
   $('#t0').text(status); 
   $('#t1').text(status); 
