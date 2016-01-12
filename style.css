@@ -1,0 +1,60 @@
+body {
+  /*background-color: white; */
+  background-color: black; 
+  text-align: center; 
+  font-size: 24px; 
+}
+
+#roof {
+  margin-top: 100px; 
+}
+
+#home {
+  margin-bottom: 100px; 
+}
+
+#roof > .row {
+  height: 200px; 
+}
+
+#roof > .row > div{
+  height: 200px; 
+}
+
+#home > .row > div{
+  height: 200px; 
+}
+
+
+#display, .tile, .green{
+  background-color: green;   
+  border: solid;
+}
+
+#display{
+  border: none;
+  font-size: 50px; 
+}
+
+.half > div{
+  height: 100px;
+  border: none;
+}
+
+.quarter > div{
+  height: 50px;
+  border: none;
+}
+.tile{
+  font-size: 100px;
+  color: white;
+  border-color: black;
+}
+
+
+.space {
+  background-color: black; 
+  /*background-color: white; */
+  /*border: solid;*/
+  /*border-color: white; */
+}
