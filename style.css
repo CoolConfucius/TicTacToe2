@@ -58,3 +58,8 @@ body {
   /*border: solid;*/
   /*border-color: white; */
 }
+
+#timer, #timer2{
+  font-size: 50px; 
+  color: white;
+}
