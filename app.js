@@ -64,6 +64,7 @@ function tileClick(event){
 function playClick(event){
   name = $name.val();
   name2 = $name2.val();
+  $play.text('');
   state = "game";
   secx = 60; 
   seco = 60; 
@@ -116,7 +117,7 @@ function resetClick(event){
   $('#home').on('click', '.tile',(tileClick)); 
   xo = false; 
   $display.text('Hit Play');
-  $play.click(playClick); 
+  $play.click(playClick).text('Play'); 
   $timer.text('60');
   $timer2.text('60');
   $reset.text('');
