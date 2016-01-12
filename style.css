@@ -72,17 +72,6 @@ span{
   color: white;
 }
 
-/*#play {
-  border-left: 50px solid black;
-  border-right: 50px solid black;
-  border-bottom: 100px solid green;
-}
-#display {
-  border-left: 50px solid black;
-  border-right: 50px solid black;
-  border-bottom: 200px solid green;
-}*/
-
 #play, #display {
   padding-top: 30px; 
 }

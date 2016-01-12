@@ -22,9 +22,9 @@ function init() {
   $display = $('#display');
   $name = $('#name');
   $name2 = $('#name2');
-  $('#play').click(playClick); 
+  $play.click(playClick); 
   $('#home').on('click', '.tile',(tileClick)); 
-  $('#reset').click(resetClick);
+  $(reset).click(resetClick);
 };
 
 function tileClick(event){
