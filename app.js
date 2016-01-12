@@ -11,8 +11,37 @@ var seco;
 var myTimer; 
 var $reset; 
 var $play; 
+// myTimer = window.setInterval(function(){
+//     if (state === 'game') {
+//       if (xo) {
+//         if (seco > 0) {
+//           seco--;     
+//           $timer.text(seco);        
+//         } else {
+//           $display.text("Time is up! \u2665 loses!")
+//           window.clearTimeout(myTimer);
+//         }
+        
+//       } else {
+//         if (secx > 0) {
+//           secx--;     
+//           $timer2.text(secx);              
+//         } else {
+//           $display.text("Time is up! \u2660 loses!")
+//           window.clearTimeout(myTimer);
+//         }
+//       }
+      
+//     };
+
+//   }, 200);
 
 function init() {
+  $reset = $('#reset'); 
+  $timer = $('#timer'); 
+  $timer2 = $('#timer2'); 
+  $play = $('#play');
+  $display = $('#display');
   $('#play').click(playClick); 
   $('#home').on('click', '.tile',(tileClick)); 
   $('#reset').click(resetClick);
@@ -21,7 +50,7 @@ function init() {
 function tileClick(event){
   console.log(state);
   if (state === 'game') {
-    $display = $('#display');
+    // $display = $('#display');
     // event.stopPropagation();
     // event.preventDefault(); 
     var $this = $(this);
@@ -38,7 +67,7 @@ function tileClick(event){
       }
       $this.text(mark);     
       if (win(mark)) {
-        $reset = $('#reset');
+        // $reset = $('#reset');
         $reset.text("Play again");
         state = 'gameover';
         $display = $('#display');
@@ -52,31 +81,34 @@ function tileClick(event){
 };
 
 function playClick(event){
-  $display = $('#display');
-  $timer = $('#timer'); 
-  $timer2 = $('#timer2'); 
+  // $display = $('#display');
+  // $timer = $('#timer'); 
+  // $timer2 = $('#timer2'); 
   state = "game";
   secx = 60; 
   seco = 60; 
   myTimer = window.setInterval(function(){
-    if (xo) {
-      if (seco > 0) {
-        seco--;     
-        $timer.text(seco);        
+    if (state === 'game') {
+      if (xo) {
+        if (seco > 0) {
+          seco--;     
+          $timer.text(seco);        
+        } else {
+          $display.text("Time is up! \u2665 loses!")
+          window.clearTimeout(myTimer);
+        }
+        
       } else {
-        $display.text("Time is up! \u2665 loses!")
-        window.clearTimeout(myTimer);
+        if (secx > 0) {
+          secx--;     
+          $timer2.text(secx);              
+        } else {
+          $display.text("Time is up! \u2660 loses!")
+          window.clearTimeout(myTimer);
+        }
       }
       
-    } else {
-      if (secx > 0) {
-        secx--;     
-        $timer2.text(secx);              
-      } else {
-        $display.text("Time is up! \u2660 loses!")
-        window.clearTimeout(myTimer);
-      }
-    }
+    };
 
   }, 200);
   xo = false; 
@@ -86,7 +118,8 @@ function playClick(event){
 }
 
 function resetClick(event){
-  var $display = $('#display');
+  window.clearTimeout(myTimer);
+  // $display = $('#display');
   var clear = ""; 
   $('#t0').text(clear); 
   $('#t1').text(clear); 
@@ -99,7 +132,8 @@ function resetClick(event){
   $('#t8').text(clear); 
   xo = false; 
   $display.text('Hit Play');
-  $('#play').click(playClick); 
+  // $('#play').click(playClick); 
+  $play.click(playClick); 
   $timer.text('60');
   $timer2.text('60');
   $reset.text('');
