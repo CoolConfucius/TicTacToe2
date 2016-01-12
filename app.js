@@ -5,6 +5,7 @@ var xo = false;
 var gameover = false; 
 var $display; 
 var $timer; 
+var $timer2;
 var secx; 
 var seco; 
 var myTimer; 
@@ -44,6 +45,7 @@ function tileClick(event){
 function playClick(event){
   $display = $('#display');
   $timer = $('#timer'); 
+  $timer2 = $('#timer2'); 
   secx = 60; 
   seco = 60; 
   myTimer = window.setInterval(function(){
@@ -60,7 +62,7 @@ function playClick(event){
     } else {
       if (secx > 0) {
         secx--;     
-        $timer.text(secx);              
+        $timer2.text(secx);              
       } else {
         alert("Time is up! \u2660 loses!");
         $display.text("Time is up! \u2660 loses!")
