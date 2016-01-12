@@ -11,6 +11,9 @@ var seco;
 var myTimer; 
 var $reset; 
 var $play; 
+var $name, $name2; 
+var name = '';
+var name2 = ''; 
 
 function init() {
   $reset = $('#reset'); 
@@ -18,9 +21,13 @@ function init() {
   $timer2 = $('#timer2'); 
   $play = $('#play');
   $display = $('#display');
+  $name = $('#name');
+  $name2 = $('#name2');
   $('#play').click(playClick); 
   $('#home').on('click', '.tile',(tileClick)); 
   $('#reset').click(resetClick);
+  $('#submit').click(submitClick);
+  $('#submit2').click(submit2Click);
 };
 
 function tileClick(event){
@@ -32,18 +39,22 @@ function tileClick(event){
       if (xo) {
         mark = '\u2665';
         xo = false; 
-        $display.text("\u2660's turn");
+        console.log(name);
+        $display.text(name + " \u2660's turn");        
       } else {
         mark = '\u2660';
         xo = true; 
-        $display.text("\u2665's turn");
+        console.log(name2);
+        $display.text(name2 + " \u2665's turn");
       }
       $this.text(mark);     
       if (win(mark)) {
         $reset.text("Play again");
         state = 'gameover';
         $display = $('#display');
-        var message = "Player " + mark + " wins!"
+        var winner;
+        if (xo) { winner = name;} else {winner = name2;};
+        var message = winner + " Player " + mark + " wins!"
         $display.text(message); 
         window.clearTimeout(myTimer);
       };
@@ -53,6 +64,10 @@ function tileClick(event){
 };
 
 function playClick(event){
+  $('#submit').off();
+  $('#submit2').off();
+  name = $name.val();
+  name2 = $name2.val();
   state = "game";
   secx = 60; 
   seco = 60; 
@@ -63,7 +78,7 @@ function playClick(event){
           seco--;     
           $timer.text(seco);        
         } else {
-          $display.text("Time is up! \u2665 loses!")
+          $display.text("Time is up! "+name2+" \u2665 loses!")
           window.clearTimeout(myTimer);
         }
         
@@ -72,7 +87,7 @@ function playClick(event){
           secx--;     
           $timer2.text(secx);              
         } else {
-          $display.text("Time is up! \u2660 loses!")
+          $display.text("Time is up! "+name+" \u2660 loses!")
           window.clearTimeout(myTimer);
         }
       }
@@ -82,7 +97,7 @@ function playClick(event){
   }, 200);
   xo = false; 
   state = 'game';
-  $display.text("\u2660's turn");
+  $display.text(name + " \u2660's turn");
   $('#play').off(); 
 }
 
@@ -105,7 +120,22 @@ function resetClick(event){
   $timer2.text('60');
   $reset.text('');
   state = "pregame";
+  name = '';
+  name2 = '';
+  $name.text('');
+  $name2.text('');
+  $('#submit').click(submitClick);
+  $('#submit2').click(submit2Click);
 }
+
+function submitClick(event){
+  name = $name.val();
+  console.log(name);
+};
+function submit2Click(event){
+  name2 = $name2.val();
+  console.log(name2);
+};
 
 
 var win = function(xo) {

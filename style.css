@@ -6,7 +6,7 @@ body {
 }
 
 #roof {
-  margin-top: 100px; 
+  margin-top: 50px; 
 }
 
 #home {
@@ -51,6 +51,10 @@ body {
   border-color: black;
 }
 
+.tile:hover{
+  cursor: pointer;
+}
+
 
 .space {
   background-color: black; 
@@ -62,4 +66,20 @@ body {
 #timer, #timer2{
   font-size: 50px; 
   color: white;
+}
+
+#form {
+  margin-top: 100px; 
+}
+
+span{
+  color: white;
+};
+
+#submit:hover{
+  cursor: pointer;
+} 
+
+#submit2:hover {
+  cursor: crosshair;
 }
