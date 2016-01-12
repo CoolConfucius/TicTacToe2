@@ -1,14 +1,15 @@
+'use strict'; 
 $(document).ready(init); 
 
 var xo = false; 
 var gameover = false; 
 var $display; 
 var $timer; 
-var secs; 
+var secx; 
+var seco; 
 var myTimer; 
 
 function init() {
-  // $display = $('#display');
   $('#play').click(playClick); 
   $('#home').on('click', '.tile',(tileClick)); 
 };
@@ -17,7 +18,6 @@ function tileClick(event){
   $display = $('#display');
   event.stopPropagation();
   event.preventDefault(); 
-  console.log($display);
   var $this = $(this);
   if (!gameover && $this.text() === '') {
     var mark = '';
@@ -44,13 +44,9 @@ function tileClick(event){
 function playClick(event){
   $display = $('#display');
   $timer = $('#timer'); 
-  secs = 0; 
   secx = 60; 
   seco = 60; 
   myTimer = window.setInterval(function(){
-    // console.log('hello?');
-    // secs++;     
-    // $timer.text(secs);
     if (xo) {
       if (seco > 0) {
         seco--;     
@@ -73,16 +69,6 @@ function playClick(event){
     }
 
   }, 200);
-  var status = ""; 
-  $('#t0').text(status); 
-  $('#t1').text(status); 
-  $('#t2').text(status); 
-  $('#t3').text(status); 
-  $('#t4').text(status); 
-  $('#t5').text(status); 
-  $('#t6').text(status); 
-  $('#t7').text(status); 
-  $('#t8').text(status); 
   xo = false; 
   gameover = false; 
   $display.text("\u2660's turn");
