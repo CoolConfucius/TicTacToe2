@@ -70,4 +70,8 @@ body {
 
 span{
   color: white;
-};
+}
+
+#play, #display {
+  padding-top: 30px; 
+}

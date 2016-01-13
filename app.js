@@ -6,8 +6,7 @@ var state = 'pregame';
 var $display; 
 var $timer; 
 var $timer2;
-var secx; 
-var seco; 
+var secx, seco; 
 var myTimer; 
 var $reset; 
 var $play; 
@@ -23,9 +22,9 @@ function init() {
   $display = $('#display');
   $name = $('#name');
   $name2 = $('#name2');
-  $('#play').click(playClick); 
+  $play.click(playClick); 
   $('#home').on('click', '.tile',(tileClick)); 
-  $('#reset').click(resetClick);
+  $(reset).click(resetClick);
 };
 
 function tileClick(event){
@@ -65,6 +64,7 @@ function tileClick(event){
 function playClick(event){
   name = $name.val();
   name2 = $name2.val();
+  $play.text('');
   state = "game";
   secx = 60; 
   seco = 60; 
@@ -78,6 +78,7 @@ function playClick(event){
           $display.text("Time is up! "+name2+" \u2665 loses!")
           window.clearTimeout(myTimer);
           $('#home').off();
+          $reset.text("Play again");
         }
         
       } else {
@@ -88,6 +89,7 @@ function playClick(event){
           $display.text("Time is up! "+name+" \u2660 loses!")
           window.clearTimeout(myTimer);
           $('#home').off();
+          $reset.text("Play again");
         }
       }
       
@@ -115,7 +117,7 @@ function resetClick(event){
   $('#home').on('click', '.tile',(tileClick)); 
   xo = false; 
   $display.text('Hit Play');
-  $play.click(playClick); 
+  $play.click(playClick).text('Play'); 
   $timer.text('60');
   $timer2.text('60');
   $reset.text('');
